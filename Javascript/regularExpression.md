@@ -47,3 +47,34 @@ let twinkleStar = "Twinkle, twinkle, little star";
 let starRegex = /Twinkle/gi;
 let result = twinkleStar.match(starRegex); // ['Twinkle', 'twinkle']
 ```
+
+The wildcard character --> **(.)**  --> match any character
+
+```javascript
+let exampleStr = "Let's have fun with regular expressions!";
+let unRegex = /.un/;
+let result = unRegex.test(exampleStr); // true
+```
+
+```javascript
+let bigStr = "big";
+let bagStr = "bag";
+let bugStr = "bug";
+let bogStr = "bog";
+let bgRegex = /b[aiu]g/; // there are between b and g a,i,u can be.
+bigStr.match(bgRegex); // true
+```
+
+```javascript
+let batStr = "bat";
+let matStr = "mat";
+let bgRegex = /[a-e]at/; // before at can be characters between a and e.
+batStr.match(bgRegex); // ["bat"]
+matStr.match(bgRegex); // null
+```
+
+```javascript
+let jennyStr = "Jenny8675309";
+let myRegex = /[a-z0-9]/ig; // between a-z and 0-9
+jennyStr.match(myRegex);
+```
