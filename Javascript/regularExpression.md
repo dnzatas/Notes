@@ -78,3 +78,56 @@ let jennyStr = "Jenny8675309";
 let myRegex = /[a-z0-9]/ig; // between a-z and 0-9
 jennyStr.match(myRegex);
 ```
+```javascript
+let myRegex = /[^aeiou]/gi; // matches all characters that are not a vowel
+```
+
+```javascript
+let word = "Mississippis";
+let rgx = /s+/gi; // Change this line
+let result = word.match(rgx); // ["ss", "ss", "s"]
+```
+```javascript
+let soccerWord = "gooooooooal!";
+let gPhrase = "gut feeling";
+let oPhrase = "over the moon";
+let goRegex = /go*/;
+soccerWord.match(goRegex); // ["goooooooo"]
+gPhrase.match(goRegex); // ["g"]
+oPhrase.match(goRegex); // null
+```
+
+```javascript
+let txt = "titanic";
+
+let rgx = /t[a-z]*i/;
+let res = txt.match(rgx) // ["titani"]
+
+let rgx2 = /t[a-z]*?i/
+let res2 = txt.match(rgx2) // ["ti"]
+```
+
+```javascript
+let firstString = "Ricky is first and can be found.";
+let firstRegex = /^Ricky/; // Nothing will happen before Ricky
+firstRegex.test(firstString); // true
+let notFirst = "You can't find Ricky now.";
+firstRegex.test(notFirst); // false
+```
+
+```javascript
+let theEnding = "This is a never ending story";
+let storyRegex = /story$/; // Nothing will happen after story
+storyRegex.test(theEnding);
+```
+
+```javascript
+let longHand = /[A-Za-z0-9_]+/; 
+let shortHand = /\w+/; // This is equal to [A-Za-z0-9_].
+let oppShortHand = /\W/; // \W İS Opposite of the \w
+```
+
+```javascript
+let spaceRegex = /\s/; // \s is for whitespace and [ \r\t\f\n\v] 
+let spaceRegex = /\S/; // \S is opposite of whitespace
+```
