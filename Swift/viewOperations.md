@@ -44,5 +44,25 @@ Go back to first page **Show(Push) Segue**
 }
 ```
 
+Hide Back Button in **Show(Push) Segue**
+
+```swift
+override func viewDidLoad(){
+    super.viewDidLoad()
+
+    self.navigationItem.hidesBackButton = true
+}
+```
  
-    
+Listening to transitions between pages
+
+```swift
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == "go3to1"{
+        print("3'ten 1'e geçiş yapıldı")
+    }
+    if segue.identifier == "go3to2"{
+        print("3'ten 2'ye geçiş yapıldı")
+    }
+}
+```
