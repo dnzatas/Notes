@@ -215,7 +215,7 @@ With Storyboard Segue
 ```swift
 // In this part we transfer data with segue and code. If we just send data without any process we can use that method
 // We create textField and two button in ViewController. Create a label in SecondViewController. Create a label in ThirdViewController.
-// We create segues(Modal Present) from buttons to SecondViewController and ThirdViewController. Create them segue identifiers.
+// We create segues(Modal Present) from buttons to SecondViewController and ThirdViewController. Create their segue identifiers.
 
 // Main Controller
 import UIKit
@@ -264,4 +264,74 @@ class ThirdViewController: UIViewController {
     }
 }
 
+```
+
+With Storyboard Segue 
+
+```swift
+// In this part we transfer data with segue and code. If we want to send data with any process we can use that method
+// We create textField and two button in ViewController. Create a label in SecondViewController. Create a label in ThirdViewController.
+// We create general segues from main controller(ViewController) to SecondViewController and ThirdViewController and create their segue identifiers.
+// We use show segue for SecondViewController and use Present Modally for ThirdViewController. Its totaly optional.
+
+// Main Controller
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var textField: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad() 
+    }
+
+    @IBAction func gotob(_ sender: Any) {
+        let gidenVeri = textField.text!
+        performSegue(withIdentifier: "atob", sender: gidenVeri) 
+    }
+    
+    @IBAction func gotoc(_ sender: Any) {
+        let gidenVeri = textField.text!
+        performSegue(withIdentifier: "atoc", sender: gidenVeri)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "atob"{
+            if let veri = sender as? String{
+                let controller = segue.destination as! SecondViewController
+                controller.textLabel = veri
+            }  
+        }
+        if segue.identifier == "atoc"{
+            if let veri = sender as? String{
+                let controller = segue.destination as! ThirdViewController
+                controller.labelText = veri
+            }
+        }
+    }
+    
+}
+
+// Second Controller
+import UIKit
+
+class SecondViewController: UIViewController {
+    @IBOutlet weak var labelFeid: UILabel!
+    var textLabel:String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelFeid.text = textLabel 
+    }
+}
+
+// Third Controller 
+import UIKit
+
+class ThirdViewController: UIViewController {
+    @IBOutlet weak var labelField: UILabel!
+    var labelText:String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelField.text = labelText   
+    }
+}
 ```
