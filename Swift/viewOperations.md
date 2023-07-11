@@ -210,3 +210,58 @@ class SecondViewController: UIViewController {
     }
 }
 ```
+
+With Storyboard Segue 
+```swift
+// In this part we transfer data with segue and code. If we just send data without any process we can use that method
+// We create textField and two button in ViewController. Create a label in SecondViewController. Create a label in ThirdViewController.
+// We create segues(Modal Present) from buttons to SecondViewController and ThirdViewController. Create them segue identifiers.
+
+// Main Controller
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var textField: UITextField!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "atob"{
+            let controller = segue.destination as! SecondViewController
+            controller.textLabel = textField.text
+        }
+        if segue.identifier == "atoc"{
+            let controller = segue.destination as! ThirdViewController
+            controller.labelText = textField.text
+        }
+    }
+}
+
+
+// Second Controller
+import UIKit
+
+class SecondViewController: UIViewController {
+    @IBOutlet weak var labelFeid: UILabel!
+    var textLabel:String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelFeid.text = textLabel 
+    }
+}
+
+// Third Controller 
+import UIKit
+
+class ThirdViewController: UIViewController {
+    @IBOutlet weak var labelField: UILabel!
+    var labelText:String?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        labelField.text = labelText   
+    }
+}
+
+```
