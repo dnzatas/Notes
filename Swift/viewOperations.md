@@ -266,7 +266,7 @@ class ThirdViewController: UIViewController {
 
 ```
 
-With Storyboard Segue 
+With Perform Segue 
 
 ```swift
 // In this part we transfer data with segue and code. If we want to send data with any process we can use that method
