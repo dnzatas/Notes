@@ -50,8 +50,8 @@ Advanced Alert
         present(alertController, animated: true)
 }
 ```
+# Action Sheet
 
-Action Sheet
 
 ```Swift
 @IBAction func actionSheetShow(_ sender: Any) {
