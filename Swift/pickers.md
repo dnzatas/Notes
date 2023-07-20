@@ -95,7 +95,7 @@ import UIKit
 class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var ulkelerLabel: UILabel!
-    @IBOutlet weak var pickView: UIPickerView!
+    @IBOutlet weak var pickerView: UIPickerView!
     
     var ulkeler = [String]()
     var secilenUlke:String?
@@ -103,8 +103,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        pickView.delegate = self
-        pickView.dataSource = self
+        pickerView.delegate = self
+        pickerView.dataSource = self
         
         ulkeler = ["Türkiye", "Japonya", "Almanya", "Tayland", "Amerika"]
         
