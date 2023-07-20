@@ -184,12 +184,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
 ## Add Button on Picker View
 
 ```swift
-//
-//  ViewController.swift
-//  Picker View
-//
-//  Created by deniz on 20.07.2023.
-//
 
 import UIKit
 
