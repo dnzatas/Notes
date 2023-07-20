@@ -86,3 +86,56 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+# Picker View
+
+```swift
+import UIKit
+
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+
+    @IBOutlet weak var ulkelerLabel: UILabel!
+    @IBOutlet weak var pickView: UIPickerView!
+    
+    var ulkeler = [String]()
+    var secilenUlke:String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        pickView.delegate = self
+        pickView.dataSource = self
+        
+        ulkeler = ["Türkiye", "Japonya", "Almanya", "Tayland", "Amerika"]
+        
+    }
+    
+    // Sütun sayısı
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // Satır sayısı
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return ulkeler.count
+    }
+    
+    // Picker View'de görünecek veriler
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return ulkeler[row]
+    }
+    
+    // Seçilen veriyi label'a atama 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        secilenUlke = ulkeler[row]
+        ulkelerLabel.text = secilenUlke
+    }
+
+    // Butona bastığımızda seçilen veriyi ekrana yazdırma
+    @IBAction func gosterAct(_ sender: Any) {
+        print("secilenUlke: ", secilenUlke!)
+    }
+    
+}
+
+```
