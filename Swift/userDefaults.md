@@ -1,5 +1,6 @@
 # User Defaults
 
+## Veri Yazma, Çekme, Silme
 ```swift
 
 import UIKit
@@ -41,6 +42,33 @@ class ViewController: UIViewController {
         let adKontrol = d.string(forKey: "ad") ?? "isim yok"
         print("adKontrol: ", adKontrol) // return "isim yok
         
+    }
+}
+```
+## Veri Yazmadan Veri Çekme
+
+```swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var sayacLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let d = UserDefaults.standard
+        
+        // String olduğunda ilk değeri vermelisin
+        // var sayacStr = d.string(forKey: "sayacStr") ?? "ilk deger"
+        
+        // Sayacı set etmeden çektim. Integer olduğu için otomatik sıfır atadı
+        var sayac = d.integer(forKey: "sayac")
+        sayac += 1
+        
+        d.set(sayac, forKey: "sayac")
+        
+        sayacLabel.text = "Sayac: \(sayac)"
     }
 }
 ```
