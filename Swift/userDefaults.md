@@ -72,3 +72,102 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## UserDefaults ile Başka Sayfaya Geçiş
+
+UserDefaults'ta kayıtlı olan name ve password kontrolü yapılır. Değer varsa SecondViewController sayfasına gider. Yoksa name ve password girişi yapılır.
+
+```swift
+
+//  ViewController.swift
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet weak var nameLabel:UITextField!
+    @IBOutlet weak var passwordField: UITextField!
+    
+    let d = UserDefaults.standard
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let name = d.string(forKey: "savedName") ?? ""
+        let password = d.string(forKey: "savedPassword") ?? ""
+        
+        if isValid(name, password){
+            navigateToSecondScreen(name:name)
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+        nameLabel.text = ""
+        passwordField.text = ""
+        
+        nameLabel.becomeFirstResponder()
+    }
+    
+    @IBAction func loginButton(_ sender: Any) {
+        let name = nameLabel.text ?? ""
+        let password = passwordField.text ?? ""
+        
+        if isValid(name, password){
+            d.set(name, forKey: "savedName")
+            d.set(password, forKey: "savedPassword")
+            navigateToSecondScreen(name:name)
+        }else{
+            showAlert(message: "Invalid name or password")
+        }
+        
+    }
+    
+    func isValid(_ name:String, _ password:String) -> Bool{
+        return !name.isEmpty && !password.isEmpty
+    }
+    
+    func showAlert(message: String){
+        let alertController = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func navigateToSecondScreen(name:String){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: "SecondViewController") as! SecondViewController
+        controller.nameText = name
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
+        
+}
+
+
+//  SecondViewController.swift
+import UIKit
+
+class SecondViewController: UIViewController {
+
+    @IBOutlet weak var secondNameLabel: UILabel!
+    let d = UserDefaults.standard
+    var nameText: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        secondNameLabel.text = nameText
+        
+    }
+    
+    @IBAction func exitButton(_ sender: Any) {
+        print("exitttt")
+        d.removeObject(forKey: "savedName")
+        d.removeObject(forKey: "savedPassword")
+        
+        navigationController?.popViewController(animated: true)
+        
+    }
+    
+}
+
+```
