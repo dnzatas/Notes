@@ -78,3 +78,36 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## Kisiler and KisiCevap Object
+```swift
+//  Kisiler.swift
+import Foundation
+
+class Kisiler: Codable {
+    var kisi_id:String?
+    var kisi_ad:String?
+    var kisi_tel:String?
+    
+    init(kisi_id: String, kisi_ad: String, kisi_tel: String) {
+        self.kisi_id = kisi_id
+        self.kisi_ad = kisi_ad
+        self.kisi_tel = kisi_tel
+    }
+}
+
+
+//  KisiCevap.swift
+import Foundation
+
+class KisiCevap: Codable {
+    
+    var kisiler:[Kisiler]?
+    var success:Int?
+    
+    init(kisiler: [Kisiler], success: Int) {
+        self.kisiler = kisiler
+        self.success = success
+    }
+}
+```
