@@ -1,4 +1,4 @@
-## Protocol Usage for Data 
+## Protocol Usage for Data Transfer
 
 Data showing in ViewController
 ```swift
