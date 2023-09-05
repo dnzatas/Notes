@@ -301,7 +301,8 @@ print(homeRuns.total)
 
 <b><span style='color: orange;'>Opaque Types</span></b>
 
-<font color="orange">Opaque Types</font>
+<span style="color: orange;">This text appears orange.</span>
+<span style="color: red;">This text appears orange.</span>
 
 *  Protocols can be used as types
 
