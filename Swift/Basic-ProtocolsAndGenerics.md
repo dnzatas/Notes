@@ -301,6 +301,8 @@ print(homeRuns.total)
 
 <b><span style='color: orange;'>Opaque Types</span></b>
 
+<font color="orange">Opaque Types</font>
+
 *  Protocols can be used as types
 
 ```swift
