@@ -6,17 +6,10 @@
 * open **NewMainViewController.storyboard** and with **class** option on the right bar connect them each other 
 * open **NewMainViewController.storyboard** and in **StoryboardID** option on the right bar write storyboard id like this: **NewMainViewController**
 
-after these steps in the SceneDelegate write these codes
+After these steps in the SceneDelegate write these codes
 
 ```swift
-
-//
 //  SceneDelegate.swift
-//  Universal News
-//
-//  Created by deniz on 9.09.2023.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
