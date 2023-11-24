@@ -1,6 +1,8 @@
 
 # Computed Property
 
+## Get - Set
+
 ```swift
 // vacationRemaining is computed property
 
@@ -41,4 +43,44 @@ struct Content {
 
 let content = Content(name: "swiftlee", fileExtension: "png")
 print(content.filename) // Prints: "swiftlee.png"
+```
+
+
+
+## didSet - willSet
+
+```swift
+struct Game {
+    var score = 0 {
+        didSet {
+            print("Score is now \(score)")
+        }
+    }
+}
+
+var game = Game()
+game.score += 10
+game.score -= 3
+game.score += 1
+```
+
+```swift
+struct App {
+    var contacts = [String]() {
+        willSet {
+            print("Current value is: \(contacts)") // first call: Current value is: []
+            print("New value will be: \(newValue)") // first call: New value will be: ["Adrian E"]
+        }
+
+        didSet {
+            print("There are now \(contacts.count) contacts.") // first call: There are now 1 contacts.
+            print("Old value was \(oldValue)") // Old value was []"
+        }
+    }
+}
+
+var app = App()
+app.contacts.append("Adrian E")
+app.contacts.append("Allen W")
+app.contacts.append("Ish S")
 ```
